@@ -1,18 +1,15 @@
-students = [
-    ("Rahul", 85),
-    ("Priya", 92),
-    ("Arun", 78),
-    ("Sneha", 95),
-    ("Kiran", 88),
-    ("Divya", 91),
-    ("Ravi", 67),
-    ("Anjali", 89),
-    ("Vijay", 96),
-    ("Pooja", 93)
-]
+# Take number of students from user
+n = int(input("Enter number of students: "))
 
-n = len(students)
+students = []
 
+# Take student details at runtime
+for i in range(n):
+    name = input("Enter student name: ")
+    marks = int(input("Enter marks: "))
+    students.append((name, marks))
+
+# Merge Sort
 size = 1
 
 while size < n:
@@ -26,6 +23,7 @@ while size < n:
         j = mid
         temp = []
 
+        # Merge two sorted parts
         while i < mid and j < right:
             if students[i][1] >= students[j][1]:
                 temp.append(students[i])
@@ -34,14 +32,17 @@ while size < n:
                 temp.append(students[j])
                 j += 1
 
+        # Add remaining elements from left part
         while i < mid:
             temp.append(students[i])
             i += 1
 
+        # Add remaining elements from right part
         while j < right:
             temp.append(students[j])
             j += 1
 
+        # Copy sorted elements back
         for k in range(len(temp)):
             students[left + k] = temp[k]
 
@@ -49,14 +50,17 @@ while size < n:
 
     size *= 2
 
-print("Students sorted in descending order:")
+
+# Display sorted students
+print("\nStudents sorted in descending order:")
 print()
 
 for name, marks in students:
     print(name, "-", marks)
 
-print()
-print("Students eligible for scholarship:")
+
+# Display scholarship eligible students
+print("\nStudents eligible for scholarship:")
 print()
 
 for name, marks in students:
