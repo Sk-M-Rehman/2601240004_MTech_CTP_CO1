@@ -1,4 +1,4 @@
-# Take number of students from user
+ # Take number of students from user
 n = int(input("Enter number of students: "))
 
 students = []
